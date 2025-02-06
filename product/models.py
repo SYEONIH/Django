@@ -10,6 +10,9 @@ class Product(models.Model):
     description = models.TextField()  # 설명
     pub_date = models.DateTimeField('date published')  # 올린 일자
 
+    def __str__(self):
+        return self.name
+
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE) # 상품

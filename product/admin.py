@@ -1,5 +1,12 @@
 from django.contrib import admin
 from .models import Product, Comment
 
-admin.site.register(Product)
-admin.site.register(Comment)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['name', 'description', 'rating', 'price', 'pub_date'] 
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['product', 'content', 'author', 'create_date', 'modify_date']  
+    search_fields = ['author']  
+
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Comment, CommentAdmin)
